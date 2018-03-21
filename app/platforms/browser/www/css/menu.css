@@ -1,0 +1,25 @@
+.menu-bottom {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+.menu-bottom a {
+    height: 40px;
+    display: block;
+    float: left;
+    width: 33.33%;
+    text-align: center;
+    line-height: 40px;
+    background: #FFFFFF;
+    padding: 20px 0;
+}
+
+.menu-bottom a.selected {
+    background: #eeeeee;
+}
+
+.menu-bottom a img {
+    width: 40px;
+}
