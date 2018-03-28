@@ -54,8 +54,7 @@ if($_GET['type'] == 'add')
      }
      // er is een rij gevonden, we updaten deze rij
     else{
-        $query = 'UPDATE api  SET cars = (cars+:cars) WHERE hour=:hour AND day=:day AND month=:month AND year=:year LIMIT 1
-              ';
+        $query = 'UPDATE api  SET cars = (cars+:cars) WHERE hour=:hour AND day=:day AND month=:month AND year=:year LIMIT 1';
 
         $insert = $db->prepare($query);
         $insert->execute([
@@ -69,4 +68,23 @@ if($_GET['type'] == 'add')
     }
 }
 
-// else if ($_GET[])
+else if ($_GET['type'] == "list"){
+    header('Content-Type: application/json');
+    $hour = date('H');
+    $day = date('d');
+    $month = date('m');
+    $year = date('Y');
+
+    // we kijken of rijen bestaan met dit uur, dag, maand en jaar
+    $queryList = "SELECT * FROM api WHERE day=:day AND month=:month AND year=:year ORDER BY hour LIMIT 24";
+    $checkList = $db->prepare($queryList);
+    $checkList->execute([
+        ':day' => $day,
+        ':month' => $month,
+        ':year' => $year,
+    ]);
+
+    $list = $checkList->fetchAll(PDO::FETCH_ASSOC);
+
+    echo json_encode($list);
+}
