@@ -98,6 +98,18 @@ body {
     background-color: rgba(255, 255, 255, 0.4);
 }
 
+#app .info-bar .text {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 20vh;
+    right: 0;
+    line-height: 15vh;
+    z-index: 50;
+    font-family: 'HelveticaNeue-Light', 'HelveticaNeue', Helvetica, Arial, sans-serif;
+    font-size: 3vh;
+}
+
 #app .info-bar-text {
     display: block;
     position: relative;
